@@ -1,16 +1,21 @@
 <html>
+{% load staticfiles %}
   <head>
-    <title>Living Single Blog </title>
+    <title>Living Single Blog</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
   </head>
   <body>
     <div>
-      <h1><a href="/">Living Single Blog</a></h1>
+      <h1><a href="/">Living Single Appreciation Blog</a></h1>
     </div>
 
     {% for post in posts %}
     <div>
       <p>published: {{ post.published_date }}</p>
-      <h2><a href="">{{ post.title }}</a></h2>
+      <h1><a href="">{{ post.title }}</a></h1>
       <p>{{ post.text|linebreaksbr }}</p>
       <!--
       <p>This blog will be devoted to seasons 1 - 4 of one of the greatest television shows I've had the pleasure to see, Living Single. The predecessor to other shows of its kind (cough cough "Friends", I'm looking at you), we will never forget you. As of now, the episodes are a bit out of order, and strictly based on my memory during this testing phase of this blog. I intend to put them into order eventually and include memorable lines!-->
