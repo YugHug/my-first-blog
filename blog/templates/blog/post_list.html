@@ -1,33 +1,48 @@
 <html>
+{% extends 'blog/base.html' %}
 {% load staticfiles %}
+
   <head>
     <title>Living Single Blog</title>
+
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" type="text/css">
+
+    <link href="//fonts.googleapis.com/css?family=Indie+Flower&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
   </head>
   <body>
-    <div>
+    <body style="background-image:url(https://i.imgur.com/7F7PN5H.jpg)">
+    <div class="page-header">
       <h1><a href="/">Living Single Appreciation Blog</a></h1>
     </div>
 
-    {% for post in posts %}
-    <div>
-      <p>published: {{ post.published_date }}</p>
-      <h1><a href="">{{ post.title }}</a></h1>
-      <p>{{ post.text|linebreaksbr }}</p>
-      <!--
-      <p>This blog will be devoted to seasons 1 - 4 of one of the greatest television shows I've had the pleasure to see, Living Single. The predecessor to other shows of its kind (cough cough "Friends", I'm looking at you), we will never forget you. As of now, the episodes are a bit out of order, and strictly based on my memory during this testing phase of this blog. I intend to put them into order eventually and include memorable lines!-->
-    </div>
-    {% endfor %}
+    <div class="content container">
+      <div class="row">
+        <div class="col-md-8">
 
-    <!--
-    <div>
-      <p>published: 10.03.2018, 15:30</p>
-      <h2><a href="">My second post</a></h2>
-      <!--
-      <p>I think that the format can be as such: (1) Memorable lines from the episode will be listed, (2) as well as a summary of the episodes influence on pop culture or rather its reflection of pop culture and its advancement (how it pushed) culture forward.
-    </div> -->
+
+        {% block content %}
+          {% for post in posts %}
+            <div class="post">
+              <div class="date">
+                {{ post.published_date }}
+              </div>
+              <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+              <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+          {% endfor %}
+        {% endblock %}
+        </div>
+      </div>
+    </div>
   </body>
+  <!--
+  <p>This blog will be devoted to seasons 1 - 4 of one of the greatest television shows I've had the pleasure to see, Living Single. The predecessor to other shows of its kind (cough cough "Friends", I'm looking at you), we will never forget you. As of now, the episodes are a bit out of order, and strictly based on my memory during this testing phase of this blog. I intend to put them into order eventually and include memorable lines!
+
+  I think that the format can be as such: (1) Memorable lines from the episode will be listed, (2) as well as a summary of the episodes influence on pop culture or rather its reflection of pop culture and its advancement (how it pushed) culture forward.-->
 </html>
